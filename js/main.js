@@ -16,6 +16,7 @@ var rotationSpeed = 0.001;
 var zoomRatio = -6;
 
 var X, Y, Z;
+var figureType;
 
 function runWebGL () {
    getRotation();
@@ -25,6 +26,10 @@ function runWebGL () {
    gl_initBuffers();
    gl_setMatrix();
    gl_draw();
+}
+
+function getFigureType() {
+  figureType = document.getElementById('tetrahedron').checked;
 }
 
 function getRotation() {
@@ -137,14 +142,10 @@ function gl_initBuffers () {
 //       1, 0, 0       // submit color: red
 //   ];
    var triangleVertices = [
-      -1, -1, -1,    0.0, 0.5, 0.0,
-       1, -1, -1,    1.0, 1.0, 1.0,
-       1,  1, -1,    0.0, 0.0, 0.0,
-      -1,  1, -1,    0.0, 0.0, 0.0,
-      -1, -1,  1,    0.0, 0.0, 0.0,
-       1, -1,  1,    0.0, 0.0, 0.0,
-       1,  1,  1,    0.0, 0.0, 0.0,
-      -1,  1,  1,    0.0, 0.0, 0.0
+      1, 1, 1,          0.1, 0.1, 0.1,
+      -1, -1, 1,        0.5, 0.5, 0.5,
+      -1, 1 , -1,       0.3, 0.3, 0.3,
+      1, -1, -1,        0.4, 0.4, 0.4
    ];
 
 
@@ -157,18 +158,10 @@ function gl_initBuffers () {
    // Triangle faces array
    // var triangleFaces = [0, 1, 2];
    var triangleFaces = [
-      0,1,2,
-      0,2,3,
-      4,5,6,
-      4,6,7,
-      0,3,7,
-      0,4,7,
-      1,2,6,
-      1,5,6,
-      2,3,6,
-      3,7,6,
-      0,1,5,
-      0,4,5
+     0, 1, 3,
+     0, 1, 2,
+     1, 2, 3,
+     0, 3, 2
    ];
 
    _triangleFacesBuffer = gl_ctx.createBuffer();                     // *******
@@ -227,7 +220,7 @@ function gl_draw() {
       // drawing is here - use these points for next drawing
       // gl_ctx.vertexAttribPointer(variable, dimension, type, normalize, total vertex size in bytes, offset)
       gl_ctx.vertexAttribPointer(_position, 3, gl_ctx.FLOAT, false, 4*(3+3), 0);
-      gl_ctx.vertexAttribPointer(_color, 3, gl_ctx.FLOAT, false, 4*(3+3), 3*4);
+      gl_ctx.vertexAttribPointer(_color, 3, gl_ctx.FLOAT, false, 4*(3+3), 4*3);
 
       gl_ctx.bindBuffer(gl_ctx.ARRAY_BUFFER, _triangleVertexBuffer);
       gl_ctx.bindBuffer(gl_ctx.ELEMENT_ARRAY_BUFFER, _triangleFacesBuffer);
@@ -236,7 +229,7 @@ function gl_draw() {
       //gl_ctx.drawElements(gl_ctx.TRIANGLES, 3, gl_ctx.UNSIGNED_SHORT, 0);
 
       // draw cube
-      gl_ctx.drawElements(gl_ctx.TRIANGLES, 6*2*3, gl_ctx.UNSIGNED_SHORT, 0);
+      gl_ctx.drawElements(gl_ctx.TRIANGLES, 3*4, gl_ctx.UNSIGNED_SHORT, 0);
 
       // drawing is finished - show the render
       gl_ctx.flush();
