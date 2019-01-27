@@ -6,10 +6,10 @@
    <script src="js/matrix.js"></script>
    <script src="js/main.js"></script>
 </head>
-<body>
+<body onload="runWebGL()">
   <div>
     <form class="rotationCheckboxes">
-      <input type="checkbox" id="rotateX" onchange="runWebGL()"> X
+      <input type="checkbox" id="rotateX" checked onchange="runWebGL()"> X
       <input type="checkbox" id="rotateY" onchange="runWebGL()"> Y
       <input type="checkbox" id="rotateZ" onchange="runWebGL()"> Z
     </form>
@@ -18,9 +18,10 @@
       <input type="radio" name="figureType" id="tetrahedron" checked onchange="runWebGL()"> Tetrahedron
     </form>
     <canvas id="glcanvas" width="500" height="300"></canvas>
+    <img class="meme" src="https://i1.wp.com/megamemes.lol/wp-content/uploads/2018/07/Code-Javascript-Underwater.jpg?w=750&ssl=1">
   </div>
   <div>
-    <img class="meme" src="https://i1.wp.com/megamemes.lol/wp-content/uploads/2018/07/Code-Javascript-Underwater.jpg?w=750&ssl=1">
+    
   </div>
 </body>
 </html>

@@ -30,6 +30,7 @@ function runWebGL () {
    gl_draw();
 }
 
+// true - cube; false - tetrahedron;
 function getFigureType() {
   figureType = document.getElementById('cube').checked;
 }
