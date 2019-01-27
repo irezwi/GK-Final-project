@@ -17,6 +17,7 @@ var zoomRatio = -6;
 
 var X, Y, Z;
 var figureType;
+var animation;
 
 function runWebGL () {
    getFigureType();
@@ -219,6 +220,9 @@ function gl_setMatrix () {
 // ==================================================================== //
 
 function gl_draw() {
+    if (animation) {
+      window.cancelAnimationFrame(animation)
+    }
    // set the color to transparent
    gl_ctx.clearColor(0.0, 0.0, 0.0, 0.0);
    // enable Depth buffer test and set depth buffer comparison function
@@ -231,6 +235,7 @@ function gl_draw() {
    var timeOld = 0;
 
    var animate = function (time) {
+     console.log(time-timeOld);
       var dAngle = rotationSpeed * (time - timeOld);
 
       if (X) {
@@ -283,10 +288,9 @@ function gl_draw() {
       // drawing is finished - show the render
       gl_ctx.flush();
       // redraws the scene as soon as ready
-      window.requestAnimationFrame(animate);
+      animation = window.requestAnimationFrame(animate);
    };
 
    // launch animate for the first time
-   animate(0);
-
+   animate(10);
 }
