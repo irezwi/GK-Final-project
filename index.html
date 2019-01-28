@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-   <title>WebGL</title>
-   <link rel="stylesheet" href="css/style.css">
-   <script src="js/matrix.js"></script>
-   <script src="js/main.js"></script>
+  <title>WebGL</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/matrix.js"></script>
+  <script src="js/main.js"></script>
 </head>
+
 <body onload="runWebGL()">
-  <div>
+  <div class="forms">
     <form class="rotationCheckboxes">
+      <!-- Kontrolki wyboru osi obrotu -->
       <input type="checkbox" id="rotateX" checked onchange="runWebGL()"> X
       <input type="checkbox" id="rotateY" onchange="runWebGL()"> Y
       <input type="checkbox" id="rotateZ" onchange="runWebGL()"> Z
+      <!-- Radio buttony wyboru animowanej bryły -->
+      <input type="radio" name="figureType" id="cube" checked onchange="runWebGL()"> Cube
+      <input type="radio" name="figureType" id="tetrahedron" onchange="runWebGL()"> Tetrahedron
+      <!-- Suwak wyboru prędkości obrotu bryły -->
+      <input type="range" id="speed" min="0" onchange="getSpeed()">
     </form>
-    <form action="">
-      <input type="radio" name="figureType" id="cube" onchange="runWebGL()"> Cube <br>
-      <input type="radio" name="figureType" id="tetrahedron" checked onchange="runWebGL()"> Tetrahedron
-    </form>
-    <canvas id="glcanvas" width="500" height="300"></canvas>
-    <img class="meme" src="https://i1.wp.com/megamemes.lol/wp-content/uploads/2018/07/Code-Javascript-Underwater.jpg?w=750&ssl=1">
   </div>
-  <div>
-    
-  </div>
+  <canvas id="glcanvas" width="500" height="300"></canvas>
+  <img class="meme" src="https://i1.wp.com/megamemes.lol/wp-content/uploads/2018/07/Code-Javascript-Underwater.jpg?w=750&ssl=1">
 </body>
+
 </html>

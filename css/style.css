@@ -1,10 +1,17 @@
 canvas#glcanvas {
-  border: 1px solid #66666D;
-  background-color: #545469;
+  margin-top: 50px;
+  border: 1px solid #2f2f2f;
+  background-color: #f9f9f9;
 }
 
 .meme {
   margin-left: 50px;
   width: 500px;
   height: 300px;
+}
+
+.forms {
+    position: absolute;
+    top: 2%;
+    left: 10%;
 }
